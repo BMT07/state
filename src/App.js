@@ -1,25 +1,41 @@
 import logo from './logo.svg';
 import './App.css';
+import React,{useState} from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+  state={
+    Person:{
+      fullName:"Bakary Traore",
+      bio:"king of world",
+      /*imgSrc:{myImage},*/
+      profession:"student"
+    },
+    shows:false
+  };
+  handleShowPerson=()=>{
+    this.setState({
+      ...this.state,
+      show:!this.state.show
+    });
+
+  }
+  render(){
+    return(
+      <>
+        {this.state.show && (
+          <>
+            <h1>{this.state.Person.fullName}</h1>
+            <h1>{this.state.Person.bio}</h1>
+            
+            <h1>{this.state.Person.profession}</h1>
+            <br></br>
+          </>
+        )}
+
+        <button onClick={this.handleShowPerson}>click here</button>
+      </>
+    );
+  }
 }
 
 export default App;
